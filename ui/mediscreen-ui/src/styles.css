@@ -1,0 +1,11 @@
+/* You can add global styles to this file, and also import other style files */
+
+.topRight{
+  position:absolute;
+  right:0px;
+  top:0px;
+}
+
+.clickable_icon {
+  cursor: pointer
+}

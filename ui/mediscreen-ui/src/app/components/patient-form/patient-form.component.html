@@ -1,0 +1,36 @@
+<!--ng-container *ngIf="notFoundError; else elseTemplate">
+  <p>Patient not found !</p>
+</!--ng-container>
+<ng-template #elseTemplate-->
+
+  <div class="card border-light position-relative col-md-8 mx-auto p-0 mt-2">
+    <h5 class="card-header">
+      <span *ngIf="isAddMode">New patient</span>
+    </h5>
+    <form class="col-md-8 form-group mt-3" [formGroup]="patientForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="lastName">Last name</label><input type="text" class="form-control" id="lastName" formControlName="lastName" placeholder="Last name">
+      </div>
+      <div class="form-group">
+        <label for="firstName">First name</label><input type="text" class="form-control" id="firstName" formControlName="firstName" placeholder="First name">
+      </div>
+      <div class="form-group form-inline">
+        <label for="birthdate">Birthdate</label><input type="date" class="form-control ml-2" id="birthdate" formControlName="birthdate" placeholder="Birthdate">
+      </div>
+      <div class="form-group form-inline">
+        <label for="sex">Sex</label><input type="text" class="form-control ml-2" id="sex" formControlName="sex" placeholder="Sex" maxlength="1" size="1">
+      </div>
+      <div class="form-group">
+        <label for="address">Address</label><textarea class="form-control" id="address" formControlName="address" placeholder="Address"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="address">Phone</label><input type="text" class="form-control" id="phone" formControlName="phone" placeholder="Phone">
+      </div>
+      <button class="btn btn-primary" [disabled]="patientForm.invalid">Save</button>
+      <button class="btn btn-danger" onclick="history.back()">Cancel</button>
+    </form>
+    <div *ngIf="validationError" class="text-danger">{{ validationError }}</div>
+  </div>
+<!--/ng-template-->
+
+
