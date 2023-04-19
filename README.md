@@ -1,6 +1,7 @@
-# Mediscreen
+# Mediscreen 2
 
 **Mediscreen** est une _application Web_ dont le but est de détecter, au sein de la base de données, les patients à risque les plus exposés au diabète de type 2.
+Il est l'évolution de Mediscreen, le projet 9 de la formation Openclassrooms "Développeur d'applications Java".
 
 ## Stack technique 
 <img src="https://img.shields.io/badge/-JAVA%2017-00A7BB?style=for-the-badge&logo=java&logoColor=white"> <img src="https://img.shields.io/badge/-SPRING%20BOOT%203.0.5-6eb442?style=for-the-badge&logo=spring&logoColor=white">
