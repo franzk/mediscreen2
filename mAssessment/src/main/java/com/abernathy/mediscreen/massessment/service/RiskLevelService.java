@@ -1,14 +1,15 @@
 package com.abernathy.mediscreen.massessment.service;
 
+import com.abernathy.mediscreen.massessment.exception.DateFormatException;
+import com.abernathy.mediscreen.massessment.model.Patient;
+import com.abernathy.mediscreen.massessment.model.RiskLevelData;
 import com.abernathy.mediscreen.massessment.proxy.PatientProxy;
-import com.abernathy.mediscreen.mdto.exception.DateFormatException;
-import com.abernathy.mediscreen.mdto.model.PatientDto;
-import com.abernathy.mediscreen.mdto.model.RiskLevelDto;
-import com.abernathy.mediscreen.mdto.service.DtoDateUtils;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 @Service
 public class RiskLevelService {
@@ -24,7 +25,7 @@ public class RiskLevelService {
 
     public String assessmentString(int patientId) {
 
-        PatientDto patient = patientProxy.getPatientById(patientId);
+        Patient patient = patientProxy.getPatientById(patientId);
         int patientAge = this.calculateAge(patient.getBirthdate());
 
         String riskLevelMessage = this.calculateRiskLevel(patientId, patientAge, patient.getSex()).getMessage();
@@ -34,20 +35,20 @@ public class RiskLevelService {
 
     }
 
-    public RiskLevelDto assessmentRiskLevelDto(int patientId) {
+    public RiskLevelData getRiskLevel(int patientId) {
 
-        RiskLevel patientRiskLevel = this.calculateRiskLevel(patientId);
+        RiskLevel patientRiskLevelData = this.calculateRiskLevel(patientId);
 
-        RiskLevelDto riskLevelDto = new RiskLevelDto();
-        riskLevelDto.setValue(patientRiskLevel.getValue());
-        riskLevelDto.setMessage(patientRiskLevel.getMessage());
+        RiskLevelData riskLevelDataDto = new RiskLevelData();
+        riskLevelDataDto.setValue(patientRiskLevelData.getValue());
+        riskLevelDataDto.setMessage(patientRiskLevelData.getMessage());
 
-        return riskLevelDto;
+        return riskLevelDataDto;
 
     }
 
     protected RiskLevel calculateRiskLevel(int patientId) {
-        PatientDto patient = patientProxy.getPatientById(patientId);
+        Patient patient = patientProxy.getPatientById(patientId);
         int patientAge = this.calculateAge(patient.getBirthdate());
         String patientSex = patient.getSex();
         return calculateRiskLevel(patientId, patientAge, patientSex);
@@ -92,10 +93,20 @@ public class RiskLevelService {
     protected int calculateAge(String dob) {
 
         try {
-            LocalDate birthdate = DtoDateUtils.stringToDate(dob);
+            LocalDate birthdate = stringToDate(dob);
             return Period.between(birthdate, LocalDate.now()).getYears();
         } catch (DateFormatException e) {
             return 0;
+        }
+    }
+
+    private LocalDate stringToDate(String strDate) throws DateFormatException {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        try {
+            return LocalDate.parse(strDate, formatter);
+        }
+        catch(DateTimeParseException exception) {
+            throw new DateFormatException();
         }
     }
 

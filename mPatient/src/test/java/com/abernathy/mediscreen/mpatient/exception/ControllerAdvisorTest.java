@@ -1,6 +1,5 @@
 package com.abernathy.mediscreen.mpatient.exception;
 
-import com.abernathy.mediscreen.mdto.exception.DateFormatException;
 import net.bytebuddy.utility.RandomString;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

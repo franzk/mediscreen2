@@ -1,7 +1,7 @@
 package com.abernathy.mediscreen.mpatient.controller;
 
-import com.abernathy.mediscreen.mdto.exception.DateFormatException;
-import com.abernathy.mediscreen.mdto.model.PatientDto;
+import com.abernathy.mediscreen.mpatient.exception.DateFormatException;
+import com.abernathy.mediscreen.mpatient.model.PatientDto;
 import com.abernathy.mediscreen.mpatient.GenerateTestData;
 import com.abernathy.mediscreen.mpatient.exception.PatientNotFoundException;
 import com.abernathy.mediscreen.mpatient.model.Patient;

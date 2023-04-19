@@ -1,7 +1,7 @@
 package com.abernathy.mediscreen.massessment.controller;
 
+import com.abernathy.mediscreen.massessment.model.RiskLevelData;
 import com.abernathy.mediscreen.massessment.service.RiskLevelService;
-import com.abernathy.mediscreen.mdto.model.RiskLevelDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -23,8 +23,8 @@ public class AssessmentController {
     }
 
     @GetMapping("/{patientId}")
-    public ResponseEntity<RiskLevelDto> riskLevel(@PathVariable Integer patientId)  {
-        return new ResponseEntity<>(riskLevelService.assessmentRiskLevelDto(patientId), HttpStatus.OK);
+    public ResponseEntity<RiskLevelData> riskLevel(@PathVariable Integer patientId)  {
+        return new ResponseEntity<>(riskLevelService.getRiskLevel(patientId), HttpStatus.OK);
     }
 
 }

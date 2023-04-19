@@ -3,7 +3,7 @@ package com.abernathy.mediscreen.mpatient.integration;
 import com.abernathy.mediscreen.mpatient.GenerateTestData;
 import com.abernathy.mediscreen.mpatient.exception.PatientNotFoundException;
 import com.abernathy.mediscreen.mpatient.model.Patient;
-import com.abernathy.mediscreen.mdto.model.PatientDto;
+import com.abernathy.mediscreen.mpatient.model.PatientDto;
 import com.abernathy.mediscreen.mpatient.service.PatientServiceImpl;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;

@@ -43,11 +43,8 @@ Le back office, créé avec _Spring Boot_ est divisée en plusieurs _microservic
 
 ## Docker compose
 Pour éxecuter le projet avec Docker compose: 
-  - A la racine du projet, lancer la commande : 
-    - $ mvn clean install
-  - Egalement à la racine du projet, lancer la commande 
+  - A la racine du projet, lancer la commande :
     - $ docker-compose up
-  - (!) L'exécution par Docker ne nécessite pas d'effectuer les étapes de la partie **Installation** autre que le clonage du repository.
 
 ### /!\ Could Gateway
 Lorsqu'un service est lancé ultérieurement au service mGateway, il faudra rafraichir les routes du gateway manuellement grâce à la commande :  

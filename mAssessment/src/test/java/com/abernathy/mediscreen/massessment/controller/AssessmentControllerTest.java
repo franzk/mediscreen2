@@ -1,7 +1,7 @@
 package com.abernathy.mediscreen.massessment.controller;
 
+import com.abernathy.mediscreen.massessment.model.RiskLevelData;
 import com.abernathy.mediscreen.massessment.service.RiskLevelService;
-import com.abernathy.mediscreen.mdto.model.RiskLevelDto;
 import net.bytebuddy.utility.RandomString;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -14,7 +14,6 @@ import org.springframework.http.ResponseEntity;
 import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.when;
 
@@ -44,12 +43,12 @@ class AssessmentControllerTest {
     @Test
     void riskLevelTest() {
         // Arrange
-        RiskLevelDto expectedResult = new RiskLevelDto();
+        RiskLevelData expectedResult = new RiskLevelData();
         expectedResult.setMessage(RandomString.make(64));
         expectedResult.setValue(random.nextInt());
-        when(riskLevelService.assessmentRiskLevelDto(anyInt())).thenReturn(expectedResult);
+        when(riskLevelService.getRiskLevel(anyInt())).thenReturn(expectedResult);
         // Act
-        ResponseEntity<RiskLevelDto> result = controllerUnderTest.riskLevel(random.nextInt());
+        ResponseEntity<RiskLevelData> result = controllerUnderTest.riskLevel(random.nextInt());
         // Arrange
         assertThat(result.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(result.getBody()).isEqualTo(expectedResult);

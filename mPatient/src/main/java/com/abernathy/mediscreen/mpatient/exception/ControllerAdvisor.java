@@ -1,6 +1,5 @@
 package com.abernathy.mediscreen.mpatient.exception;
 
-import com.abernathy.mediscreen.mdto.exception.DateFormatException;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
